@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pentru Miruna Mea ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            /* Paleta strictă Roz - Mov */
+            --pink-deep: #ff007f;
+            --pink-soft: #ff85a1;
+            --purple-deep: #8e44ad;
+            --purple-light: #c39bd3;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Gradient EXCLUSIV Roz și Mov */
+            background: linear-gradient(-45deg, var(--pink-deep), var(--purple-deep), var(--pink-soft), var(--purple-light));
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Particule plutitoare */
+        .floating-element {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.9; }
+            90% { opacity: 0.9; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 40px;
+            border-radius: 50px;
+            /* Umbra movalie */
+            box-shadow: 0 20px 60px rgba(142, 68, 173, 0.4);
+            text-align: center;
+            max-width: 650px;
+            width: 90%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 10;
+            animation: cardPop 1.2s cubic-bezier(0.17, 0.89, 0.32, 1.4);
+        }
+
+        @keyframes cardPop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            color: #fff;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            animation: titleWave 3s infinite ease-in-out;
+        }
+
+        @keyframes titleWave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .romantic-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #ffffff;
+            text-align: justify;
+            margin-bottom: 18px;
+            text-indent: 45px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .final-call {
+            text-align: center !important;
+            text-indent: 0 !important;
+            font-weight: 700;
+            font-size: 1.4rem !important;
+            color: #fff;
+            margin-top: 25px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-8px);}
+            60% {transform: translateY(-4px);}
+        }
+
+        .gif-box img { 
+            width: 170px; 
+            border-radius: 35px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            animation: floatingGif 4s ease-in-out infinite;
+        }
+
+        @keyframes floatingGif {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-top: 30px;
+            min-height: 100px;
+        }
+
+        .btn {
+            padding: 16px 45px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-yes {
+            /* Gradient buton doar roz-mov */
+            background: linear-gradient(45deg, var(--pink-deep), var(--purple-deep));
+            color: white;
+            box-shadow: 0 10px 25px rgba(255, 0, 127, 0.4);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 0, 127, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 127, 0); }
+        }
+
+        .btn-no {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--purple-deep);
+            border: 1px solid white;
+            /* Adăugăm z-index mare ca să nu intre sub alte elemente */
+            z-index: 100; 
+        }
+
+        #no-message {
+            height: 25px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            opacity: 0;
+            background: rgba(142, 68, 173, 0.3); /* Mov transparent */
+            padding: 2px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .hidden { display: none !important; }
+
+        .content-wrapper {
+            max-height: 55vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 10px;
+        }
+        .content-wrapper::-webkit-scrollbar { display: none; }
+
+    </style>
+</head>
+<body>
+
+    <div id="particles"></div>
+
+    <section id="ask-section" class="page-section">
+        <div class="card">
+            <div class="gif-box">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueG56Znd4NjR0eXBtY3R3eG56Znd4NjR0eXBtY3R3eG56Znd4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/Y8pE6FH7H2zQxXN8x0/giphy.gif" alt="Miruna Love">
+            </div>
+            <h1>Vrei să fii Valentine-ul meu?</h1>
+            <div id="no-message">Mai gândește-te... 💜</div>
+            <div class="btn-container">
+                <button class="btn btn-yes" id="btnYes" onclick="celebrate()">DA ❤️</button>
+                <button class="btn btn-no" id="noBtn" onmouseover="handleNoInteraction()" onclick="handleNoInteraction()">NU</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="hidden page-section" id="success-page">
+        <div class="card">
+            <h1 style="font-size: 2.2rem; margin-bottom: 25px;">Mulțumesc că ai spus DA, Miruna ❤️</h1>
+            <div class="content-wrapper">
+                <div class="romantic-text">
+                    <p>Vreau să știi cât de mult te iubesc și cât de recunoscător sunt că ești lângă mine.</p>
+                    <p>Sunt foarte fericit alături de tine și cele 6 luni petrecute împreună au fost, fără îndoială, cele mai frumoase, vesele și speciale din viața mea.</p>
+                    <p>Fiecare zi cu tine m-a făcut să zâmbesc mai mult și m-a făcut să mă simt norocos.</p>
+                    <p>Îți mulțumesc pentru tot ce ești, pentru sprijin, pentru râsete și pentru iubirea ta.</p>
+                    <p>Vreau să fii Valentine-ul meu și sper să trăim împreună multe momente frumoase 💕</p>
+                    <p class="final-call">Hai să vedem drumul nostru...</p>
+                </div>
+            </div>
+            <a href="axa.html" class="btn btn-yes" style="margin-top: 15px;">Vezi Axa Noastră ➔</a>
+        </div>
+    </section>
+
+    <script>
+        // PARTICULE DOAR IN NUANTE DE ROZ SI MOV
+        const particlesContainer = document.getElementById('particles');
+        const emojis = ['❤️', '💜', '💖', '🦄', '🌸', '🔮']; 
+
+        function createParticle() {
+            const p = document.createElement('div');
+            p.className = 'floating-element';
+            p.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            p.style.left = Math.random() * 100 + 'vw';
+            // Variatie mai mare de marime
+            p.style.fontSize = Math.random() * 20 + 10 + 'px';
+            p.style.animationDuration = Math.random() * 5 + 5 + 's';
+            particlesContainer.appendChild(p);
+            setTimeout(() => p.remove(), 9000);
+        }
+        setInterval(createParticle, 300);
+
+        let yesScale = 1;
+        const noMessages = ["Ești sigură, Miruna?", "Mai gândește-te puțin...", "Nu cred așa ceva!", "Zâmbește și apasă DA!", "Te roooog! 💜"];
+
+        function handleNoInteraction() {
+            const btnNo = document.getElementById('noBtn');
+            const btnYes = document.getElementById('btnYes');
+            const msgBox = document.getElementById('no-message');
+
+            // Trece pe 'fixed' la prima interacțiune
+            if (btnNo.style.position !== 'fixed') {
+                btnNo.style.position = 'fixed';
+            }
+
+            // --- AICI AM REPARAT CALCULUL ---
+            // Luam dimensiunile ferestrei si ale butonului
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const btnWidth = btnNo.offsetWidth;
+            const btnHeight = btnNo.offsetHeight;
+            
+            // Definim o margine de siguranță (să nu fie lipit de ecran)
+            const margin = 30;
+
+            // Calculam limitele maxime unde poate ajunge butonul (Coltul Dreapta-Jos maxim)
+            const maxLeft = windowWidth - btnWidth - margin;
+            const maxTop = windowHeight - btnHeight - margin;
+
+            // Generam coordonate random intre [margin] si [maxLimit]
+            const randomX = Math.floor(Math.random() * (maxLeft - margin) + margin);
+            const randomY = Math.floor(Math.random() * (maxTop - margin) + margin);
+
+            // Aplicam noile coordonate
+            btnNo.style.left = randomX + 'px';
+            btnNo.style.top = randomY + 'px';
+
+            // Marim butonul de DA
+            yesScale += 0.3;
+            btnYes.style.transform = `scale(${yesScale})`;
+
+            msgBox.style.opacity = '1';
+            msgBox.innerText = noMessages[Math.floor(Math.random() * noMessages.length)];
+        }
+
+        function celebrate() {
+            document.getElementById('ask-section').classList.add('hidden');
+            document.getElementById('success-page').classList.remove('hidden');
+            
+            // Confetti in culorile temei (Roz si Mov)
+            const end = Date.now() + (5 * 1000);
+            (function frame() {
+                confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#ff007f', '#8e44ad', '#ffffff'] });
+                confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#ff85a1', '#c39bd3', '#ffffff'] });
+                if (Date.now() < end) requestAnimationFrame(frame);
+            }());
+        }
+    </script>
+</body>
+</html>
